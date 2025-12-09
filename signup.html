@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BenAgri Tech - Sign Up</title>
+<style>
+body { font-family: Arial; background: #eef2f0; padding: 20px; }
+.box {
+    width: 90%; max-width: 420px; margin: auto; background: white;
+    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #aaa;
+}
+input, button {
+    width: 100%; padding: 12px; margin: 8px 0;
+    border-radius: 6px; border: 1px solid #ccc;
+}
+button { background: green; color: white; border: none; font-weight: bold; }
+h2 { text-align: center; color: green; }
+</style>
+</head>
+
+<body>
+<div class="box">
+    <h2>Create Farmer Account</h2>
+
+    <input id="name" placeholder="Full Name">
+    <input id="email" placeholder="Email">
+    <input id="contact" placeholder="Phone Number">
+    <input id="password" type="password" placeholder="Password">
+    
+    <button onclick="signup()">Sign Up</button>
+
+    <p style="text-align:center;">Already have an account?  
+        <a href="login.html">Login</a></p>
+</div>
+
+<script>
+function signup() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let contact = document.getElementById("contact").value;
+    let password = document.getElementById("password").value;
+
+    if (!name || !email || !contact || !password) {
+        alert("All fields are required!");
+        return;
+    }
+
+    if (localStorage.getItem(email)) {
+        alert("Account already exists!");
+        return;
+    }
+
+    let farmer = {
+        name: name,
+        email: email,
+        contact: contact,
+        password: password,
+        foods: []
+    };
+
+    localStorage.setItem(email, JSON.stringify(farmer));
+    alert("Account created successfully!");
+    window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
