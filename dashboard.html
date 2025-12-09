@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BenAgri Tech - Farmer Dashboard</title>
+<style>
+body { font-family: Arial; background: #f2f2f2; padding: 20px; }
+.box {
+    width: 90%; max-width: 450px; background: white; margin: auto;
+    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #bbb;
+}
+input, button {
+    width: 100%; padding: 12px; margin: 8px 0;
+    border-radius: 6px; border: 1px solid #ccc;
+}
+button { background: #2f6f4e; color: white; border: none; font-weight: bold; }
+h2 { text-align: center; color: #2f6f4e; }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Post Food Items</h2>
+
+    <input id="food" placeholder="Food Item (e.g. Maize)">
+    <input id="qty" type="number" placeholder="Quantity (bags)">
+    <input id="price" type="number" placeholder="Price per Bag (GHS)">
+    
+    <button onclick="postFood()">Post Item</button>
+
+    <p style="text-align:center;"><a href="index.html">View Customer Home</a></p>
+</div>
+
+<script>
+function postFood() {
+    let food = document.getElementById("food").value;
+    let qty = document.getElementById("qty").value;
+    let price = document.getElementById("price").value;
+
+    let email = localStorage.getItem("currentUser");
+    let farmer = JSON.parse(localStorage.getItem(email));
+
+    if (!food || !qty || !price) {
+        alert("All fields are required!");
+        return;
+    }
+
+    let item = {
+        farmer: farmer.name,
+        contact: farmer.contact,
+        food: food,
+        quantity: qty,
+        price: price
+    };
+
+    let market = JSON.parse(localStorage.getItem("market")) || [];
+    market.push(item);
+
+    localStorage.setItem("market", JSON.stringify(market));
+
+    document.getElementById("food").value = "";
+    document.getElementById("qty").value = "";
+    document.getElementById("price").value = "";
+
+    alert("Food item posted successfully!");
+}
+</script>
+
+</body>
+</html>
