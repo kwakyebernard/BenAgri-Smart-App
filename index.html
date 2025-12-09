@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BenAgri Tech - Market</title>
+<style>
+body { font-family: Arial; background: #f7f7f7; padding: 20px; }
+h2 { text-align: center; color: #2f6f4e; }
+.item {
+    width: 90%; max-width: 450px; background: white; margin: 10px auto;
+    padding: 15px; border-radius: 8px; box-shadow: 0 0 8px #ccc;
+    border-left: 6px solid #2f6f4e;
+}
+.item p { margin: 5px; }
+</style>
+</head>
+
+<body>
+
+<h2>Available Food Items</h2>
+<div id="marketList"></div>
+
+<p style="text-align:center;"><a href="login.html">Farmer Login</a></p>
+
+<script>
+function loadItems() {
+    let market = JSON.parse(localStorage.getItem("market")) || [];
+    let list = document.getElementById("marketList");
+
+    if (market.length === 0) {
+        list.innerHTML = "<p style='text-align:center;'>No food items posted yet.</p>";
+        return;
+    }
+
+    list.innerHTML = "";
+
+    market.forEach(item => {
+        list.innerHTML += `
+            <div class="item">
+                <p><strong>Food:</strong> ${item.food}</p>
+                <p><strong>Quantity:</strong> ${item.quantity} bags</p>
+                <p><strong>Price:</strong> GHS ${item.price} per bag</p>
+                <p><strong>Farmer:</strong> ${item.farmer}</p>
+                <p><strong>Contact:</strong> ${item.contact}</p>
+            </div>
+        `;
+    });
+}
+
+loadItems();
+</script>
+
+</body>
+</html>
