@@ -9,6 +9,16 @@ body { font-family: Arial; background: #eef2f0; padding: 20px; }
     width: 90%; max-width: 420px; margin: auto; background: white;
     padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #aaa;
 }
+.home p {
+color:black;
+}
+.home p a {
+color:blue;
+}
+
+.home p a:hover {
+background-color:red;
+}
 input, button {
     width: 100%; padding: 12px; margin: 8px 0;
     border-radius: 6px; border: 1px solid #ccc;
@@ -32,6 +42,10 @@ h2 { text-align: center; color: green; }
         <a href="signup.html">Sign Up</a></p>
 </div>
 
+<div class="home">
+    <p style="text-align:center;">Visit Home to see available products<a href="index.html">Home</a></p>                                   
+</div>
+                                               
 <script>
 function login() {
     let email = document.getElementById("email").value;
