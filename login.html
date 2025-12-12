@@ -12,6 +12,8 @@ body { font-family: Arial; background: #eef2f0; padding: 20px; }
 
 .home {
 margin-top:5px;
+position:relative;
+display: inline-block;
 }
 .home p {
 color:black;
@@ -21,6 +23,10 @@ color:blue;
 }
 .home p a:hover {
 background-color:red;
+}
+
+.text-on-img {
+position:absolute;
 }
     
 input, button {
@@ -47,7 +53,11 @@ h2 { text-align: center; color: green; }
 </div>
 
 <div class="home">
-    <p style="text-align:center;">Visit Home to see available products<a href="index.html"> Home </a></p>                                   
+    <img src="https://raw.githubusercontent.com/kwakyebernard/BenAgri-Smart-App/refs/heads/main/IMG_1084.avif" alt="farmer's picture" width="400">
+   
+    <div class="text-on-img">
+    <p style="text-align:center;">Visit Home to see available products<a href="index.html"> Home </a></p>     
+    </div>
 </div>
                                                
 <script>
