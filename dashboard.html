@@ -1,71 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BenAgri Tech - Farmer Dashboard</title>
-<style>
-body { font-family: Arial; background: #f2f2f2; padding: 20px; }
-.box {
-    width: 90%; max-width: 450px; background: white; margin: auto;
-    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #bbb;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard | BenAgri Smart</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
-input, button {
-    width: 100%; padding: 12px; margin: 8px 0;
-    border-radius: 6px; border: 1px solid #ccc;
-}
-button { background: #2f6f4e; color: white; border: none; font-weight: bold; }
-h2 { text-align: center; color: #2f6f4e; }
-</style>
-</head>
 
+body {
+    display: flex;
+    background: #f4f6f8;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #2e7d32;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar li:hover,
+.sidebar .active {
+    background: #1b5e20;
+}
+
+.logout {
+    margin-top: 20px;
+    background: #c62828;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Top bar */
+.top-bar {
+    margin-bottom: 20px;
+}
+
+.top-bar h1 {
+    color: #2e7d32;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card p {
+    font-size: 22px;
+    margin-top: 10px;
+    color: #2e7d32;
+}
+
+/* Add Produce */
+.add-produce {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.add-produce h2 {
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.add-produce form {
+    display: grid;
+    gap: 10px;
+}
+
+.add-produce input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.add-produce button {
+    padding: 10px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-produce button:hover {
+    background: #1b5e20;
+}
+
+/* Produce List */
+.produce-list h2 {
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.produce-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+        
+    </style>
+</head>
 <body>
 
-<div class="box">
-    <h2>Post Food Items</h2>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>🌱 BenAgri</h2>
+        <ul>
+            <li class="active">Dashboard</li>
+            <li>My Produce</li>
+            <li>Add Produce</li>
+            <li>Orders</li>
+            <li>Profile</li>
+            <li class="logout">Logout</li>
+        </ul>
+    </aside>
 
-    <input id="food" placeholder="Food Item (e.g. Maize)">
-    <input id="qty" type="number" placeholder="Quantity (bags)">
-    <input id="price" type="number" placeholder="Price per Bag (GHS)">
-    
-    <button onclick="postFood()">Post Item</button>
+    <!-- Main Content -->
+    <main class="main">
+        <header class="top-bar">
+            <h1>Farmer Dashboard</h1>
+            <p>Welcome, Farmer Ben 👨‍🌾</p>
+        </header>
 
-    <p style="text-align:center;"><a href="index.html">View Customer Home</a></p>
-</div>
+        <!-- Stats -->
+        <section class="stats">
+            <div class="card">
+                <h3>🌽 Products</h3>
+                <p>12</p>
+            </div>
+            <div class="card">
+                <h3>📦 Orders</h3>
+                <p>5</p>
+            </div>
+            <div class="card">
+                <h3>💰 Earnings</h3>
+                <p>GHS 3,200</p>
+            </div>
+        </section>
 
-<script>
-function postFood() {
-    let food = document.getElementById("food").value;
-    let qty = document.getElementById("qty").value;
-    let price = document.getElementById("price").value;
+        <!-- Add Produce -->
+        <section class="add-produce">
+            <h2>Add New Produce</h2>
+            <form>
+                <input type="text" placeholder="Produce Name (e.g. Maize)" required>
+                <input type="number" placeholder="Quantity (bags)" required>
+                <input type="number" placeholder="Price per bag (GHS)" required>
+                <button type="submit">Add Produce</button>
+            </form>
+        </section>
 
-    let email = localStorage.getItem("currentUser");
-    let farmer = JSON.parse(localStorage.getItem(email));
+        <!-- Produce List -->
+        <section class="produce-list">
+            <h2>My Produce</h2>
 
-    if (!food || !qty || !price) {
-        alert("All fields are required!");
-        return;
-    }
+            <div class="produce-card">
+                <p><strong>Maize</strong></p>
+                <p>Quantity: 20 bags</p>
+                <p>Price: GHS 150/bag</p>
+            </div>
 
-    let item = {
-        farmer: farmer.name,
-        contact: farmer.contact,
-        food: food,
-        quantity: qty,
-        price: price
-    };
-
-    let market = JSON.parse(localStorage.getItem("market")) || [];
-    market.push(item);
-
-    localStorage.setItem("market", JSON.stringify(market));
-
-    document.getElementById("food").value = "";
-    document.getElementById("qty").value = "";
-    document.getElementById("price").value = "";
-
-    alert("Food item posted successfully!");
-}
-</script>
+            <div class="produce-card">
+                <p><strong>Rice</strong></p>
+                <p>Quantity: 10 bags</p>
+                <p>Price: GHS 300/bag</p>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
