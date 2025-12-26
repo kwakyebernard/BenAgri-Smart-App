@@ -63,7 +63,8 @@ header {
 }
 
 .hero a{
-    background: #e8f5e9;;
+    background: #e8f5e9;
+    color: white;
 }
 
 .hero h1 {
