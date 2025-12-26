@@ -55,23 +55,6 @@ header {
     background: #e8f5e9;
 }
 
-
-.hero {
-    text-align: center;
-    padding: 50px 20px;
-    background: #e8f5e9;
-}
-
-.hero a{
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.hero h1 {
-    margin-bottom: 10px;
-    color: #2e7d32;
-}
-
 .hero button {
     margin-top: 20px;
     padding: 10px 25px;
@@ -82,6 +65,10 @@ header {
     cursor: pointer;
 }
 
+.hero h1 {
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
 
 .gallery {
     display: flex;
