@@ -106,7 +106,7 @@ button:hover {
             <h1>🌱 BenAgri Smart</h1>
             <p class="subtitle">Login to your account</p>
 
-            <form onsubmit="login(event)">
+            <form onsubmit="goToDashboard(event)">
                 <label>Email or Phone</label>
                 <input type="text" placeholder="Enter email or phone" required>
 
@@ -127,12 +127,12 @@ button:hover {
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault();
     alert("Login successful (demo)");
-}
-    function login(e) {
-  e.preventDefault(); // prevent actual form submission
-  // redirect to dashboard
-  window.location.href = "farmer-dashboard.html";
 });
+    function goToDashboard(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            // Redirect to dashboard page
+            window.location.href = "dashboard.html";
+        }
 </script>
 </body>
     
