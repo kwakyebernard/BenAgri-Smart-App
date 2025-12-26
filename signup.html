@@ -1,67 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BenAgri Tech - Sign Up</title>
-<style>
-body { font-family: Arial; background: #eef2f0; padding: 20px; }
-.box {
-    width: 90%; max-width: 420px; margin: auto; background: white;
-    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #aaa;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | BenAgri Smart</title>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
-input, button {
-    width: 100%; padding: 12px; margin: 8px 0;
-    border-radius: 6px; border: 1px solid #ccc;
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #2e7d32, #66bb6a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-button { background: green; color: white; border: none; font-weight: bold; }
-h2 { text-align: center; color: green; }
-</style>
+
+.signup-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.signup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.signup-box h1 {
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+        
+    </style>
 </head>
-
 <body>
-<div class="box">
-    <h2>Create Farmer Account</h2>
 
-    <input id="name" placeholder="Full Name">
-    <input id="email" placeholder="Email">
-    <input id="contact" placeholder="Phone Number">
-    <input id="password" type="password" placeholder="Password">
-    
-    <button onclick="signup()">Sign Up</button>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h1>🌱 BenAgri Smart</h1>
+            <p class="subtitle">Create your account</p>
 
-    <p style="text-align:center;">Already have an account?  
-        <a href="login.html">Login</a></p>
-</div>
+            <form>
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter full name" required>
 
-<script>
-function signup() {
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let contact = document.getElementById("contact").value;
-    let password = document.getElementById("password").value;
+                <label>Email</label>
+                <input type="email" placeholder="Enter email" required>
 
-    if (!name || !email || !contact || !password) {
-        alert("All fields are required!");
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter phone number" required>
+
+                <label>User Type</label>
+                <select required>
+                    <option value="">Select user type</option>
+                    <option>Farmer</option>
+                    <option>Customer</option>
+                </select>
+
+                <label>Password</label>
+                <input type="password" placeholder="Create password" required>
+
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p class="login-link">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+        </div>
+    </div>
+
+  <script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const password = document.querySelectorAll("input[type='password']")[0].value;
+    const confirm = document.querySelectorAll("input[type='password']")[1].value;
+
+    if (password !== confirm) {
+        alert("Passwords do not match");
         return;
     }
 
-    if (localStorage.getItem(email)) {
-        alert("Account already exists!");
-        return;
-    }
-
-    let farmer = {
-        name: name,
-        email: email,
-        contact: contact,
-        password: password,
-        foods: []
-    };
-
-    localStorage.setItem(email, JSON.stringify(farmer));
-    alert("Account created successfully!");
-    window.location.href = "login.html";
-}
+    alert("Sign up successful (demo)");
+});
 </script>
 </body>
 </html>
