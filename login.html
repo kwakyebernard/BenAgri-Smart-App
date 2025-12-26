@@ -1,76 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BenAgri Tech - Login</title>
-<style>
-body { font-family: Arial; background: #eef2f0; padding: 20px; }
-.box {
-    width: 90%; max-width: 420px; margin: auto; background: white;
-    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #aaa;
-}
-
-.home {
-margin-top:5px;
-}
-.home p {
-color:black;
-}
-.home p a {
-color:blue;
-}
-.home p a:hover {
-background-color:white;
-}
-    
-input, button {
-    width: 100%; padding: 12px; margin: 8px 0;
-    border-radius: 6px; border: 1px solid #ccc;
-}
-button { background: green; color: white; border: none; font-weight: bold; }
-h2 { text-align: center; color: green; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | BenAgri Smart</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-<div class="box">
-    <h2>Farmer Login</h2>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>🌱 BenAgri Smart</h1>
+            <p class="subtitle">Login to your account</p>
 
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
+            <form>
+                <label>Email or Phone</label>
+                <input type="text" placeholder="Enter email or phone" required>
 
-    <button onclick="login()">Login</button>
+                <label>Password</label>
+                <input type="password" placeholder="Enter password" required>
 
-    <p style="text-align:center;">Don't have an account?
-        <a href="signup.html">Sign Up</a></p>
-</div>
+                <button type="submit">Login</button>
+            </form>
 
-<div class="home">
-    <p style="text-align:center;">Visit Home to see available products <a href="index.html">Home</a></p> 
-</div>
-                                               
-<script>
-function login() {
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-
-    let stored = localStorage.getItem(email);
-    if (!stored) {
-        alert("Account does not exist!");
-        return;
-    }
-
-    let farmer = JSON.parse(stored);
-    if (farmer.password !== password) {
-        alert("Incorrect password");
-        return;
-    }
-
-    localStorage.setItem("currentUser", email);
-    window.location.href = "dashboard.html";
-}
-</script>
+            <div class="links">
+                <a href="forgetpassword.html">Forgot Password?</a>
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
