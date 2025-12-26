@@ -105,7 +105,7 @@ button:hover {
             <h1>🌱 BenAgri Smart</h1>
             <p class="subtitle">Create your account</p>
 
-            <form id="signupForm">
+            <form onsubmit="goToLogin(event)">
                 <label>Full Name</label>
                 <input type="text" placeholder="Enter full name" required>
 
@@ -139,24 +139,11 @@ button:hover {
     </div>
 
   <script>
-const form = document.getElementById("signupForm");
-
-        form.addEventListener("submit", function(event) {
+function goToLogin(event) {
             event.preventDefault(); // prevent default form submission
-
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-
-            // Check if passwords match
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return; // stop execution
-            }
-
-            // If passwords match, redirect to login page
-            alert("Sign Up successful! Redirecting to Login page...");
-            window.location.href = "login.html";
-        });
+            // Optional: You can add password match validation here
+            window.location.href = "login.html"; // redirect to login page
+        }
 </script>
 </body>
 </html>
